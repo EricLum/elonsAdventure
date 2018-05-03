@@ -4,17 +4,29 @@ class Laser extends React.Component {
 
   state = {
     top: 0,
-    left: 0
+    left: 0,
+    timer: null
+  }
+
+  componentDidUpdate(){
+    console.log('updating')
+    if (parseInt(this.state.left) > 1000){
+      clearInterval(this.state.timer)
+    }
+  }
+
+  componentWillUnMount(){
+    clearInterval()
   }
 
   componentDidMount(){
     //take whatever props we get and set them to state
+    let myTimer = setInterval( () => this.tick(), 10)
     this.setState({
       top: this.props.top,
-      left: this.props.left
+      left: this.props.left,
+      timer: myTimer
     })
-
-    setInterval( () => this.tick(), 1000)
   }
 
   tick = () => {
@@ -25,7 +37,6 @@ class Laser extends React.Component {
       }
     })
   }
-
 
   render(){
     return (
