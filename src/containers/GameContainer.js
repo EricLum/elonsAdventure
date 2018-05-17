@@ -1,6 +1,7 @@
 import React from 'react'
 import Car from '../components/Car'
 import Laser from '../components/Laser'
+import Enemy from '../components/Enemy'
 export default class GameContainer extends React.Component {
 
     state = {
@@ -47,6 +48,7 @@ export default class GameContainer extends React.Component {
         <div onKeyPress={this.handleFireLasers} onKeyDown={this.handleCarMovement} >
           <Car topPosition={this.state.carVerticalPosition}/>
           {this.state.projectile}
+          <Enemy />
         </div>
       )
     }

@@ -15,10 +15,6 @@ class Laser extends React.Component {
     }
   }
 
-  componentWillUnMount(){
-    clearInterval()
-  }
-
   componentDidMount(){
     //take whatever props we get and set them to state
     let myTimer = setInterval( () => this.tick(), 10)
@@ -30,7 +26,6 @@ class Laser extends React.Component {
   }
 
   tick = () => {
-    console.log(this.state.left)
     this.setState( prevState => {
       return {
         left: parseInt(prevState.left) + 50
